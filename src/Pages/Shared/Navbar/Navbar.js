@@ -7,6 +7,7 @@ import { faBars, faSeedling, faTimes } from '@fortawesome/free-solid-svg-icons'
 
 
 
+
 const Navbar = () => {
     const [click, setClick] = useState(false);
     const handleClick = () => {
@@ -19,7 +20,7 @@ const Navbar = () => {
                 <div className='menu-icon' onClick={handleClick}>
                     {click ? <FontAwesomeIcon className='fa-logo' icon={faTimes} /> : <FontAwesomeIcon className='fa-logo' icon={faBars} />}
                 </div>
-                <ul className={click ? 'nav-menu-active' : 'nav-menu'}>
+                <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                     <li><Link to="/home">Home</Link></li>
                     <li><Link to="/manageitems">Manage Items</Link></li>
                     <li><Link to="/additems">Add Items</Link></li>
