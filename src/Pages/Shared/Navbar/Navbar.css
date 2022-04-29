@@ -1,0 +1,52 @@
+.nav-items {
+    margin-top: 0px;
+    background-color: #222;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.nav-items li a {
+    text-decoration: none;
+    color: #C1C1C1;
+    padding: 1.8rem 1rem;
+}
+
+.nav-items li a:hover {
+    background-color: #DA5454;
+    transition: all 0.2s ease-out;
+}
+
+.menu-icon {
+    cursor: pointer;
+    color: #C1C1C1;
+}
+
+.nav-logo {
+    color: #C1C1C1;
+    justify-self: start;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.fa-logo {
+    margin-left: 0.5rem;
+    font-size: 2.3rem;
+}
+
+.nav-menu {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    grid-gap: 10px;
+    list-style: none;
+    text-align: center;
+    width: 70vw;
+    justify-content: end;
+    margin-right: 2rem;
+}
+
+.menu-icon {
+    display: none;
+}
