@@ -38,11 +38,11 @@
 
 .nav-menu {
     display: grid;
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(5, auto);
     grid-gap: 10px;
     list-style: none;
     text-align: center;
-    width: 70vw;
+    width: 60vw;
     justify-content: end;
     margin-right: 2rem;
 }
@@ -60,7 +60,7 @@
         display: flex;
         flex-direction: column;
         width: 100%;
-        height: 400px;
+        height: 450px;
         position: absolute;
         top: 70px;
         left: -100%;
@@ -69,7 +69,7 @@
     }
 
     .nav-menu.active {
-        background: #222;
+        background: rgb(66, 23, 23);
         left: 0;
         opacity: 1;
         transition: all 0.5s ease;
@@ -103,5 +103,9 @@
         transform: translate(-30%, 40%);
         font-size: 1.8rem;
         cursor: pointer;
+    }
+
+    .btn-login {
+        margin-bottom: 5px;
     }
 }

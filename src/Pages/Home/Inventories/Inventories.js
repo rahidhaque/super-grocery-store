@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Button } from 'react-bootstrap';
 import Inventory from '../Inventory/Inventory';
 import './inventories.css'
 
@@ -19,6 +20,9 @@ const Inventories = () => {
                             inventory={inventory}
                         ></Inventory>)
                     }
+                </div>
+                <div className='text-center'>
+                    <Button className='w-15 rounded my-2' variant='danger'>Manage Inventories</Button>
                 </div>
             </div>
         </div>

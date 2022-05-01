@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './Navbar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faSeedling, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { Button } from 'react-bootstrap';
 
 
 
@@ -25,6 +26,7 @@ const Navbar = () => {
                     <li><Link to="/manageitems">Manage Items</Link></li>
                     <li><Link to="/additems">Add Items</Link></li>
                     <li><Link to="/myitems">My Items</Link></li>
+                    <li><Button className='btn-login' variant='danger'>Login</Button></li>
                 </ul>
             </nav>
         </div>
