@@ -85,6 +85,7 @@
 
     .nav-items li a:hover {
         background-color: #222;
+        color: #DA5454;
     }
 
     .nav-logo {
