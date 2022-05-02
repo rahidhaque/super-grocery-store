@@ -26,7 +26,7 @@ const Navbar = () => {
                     <li><Link to="/manageitems">Manage Items</Link></li>
                     <li><Link to="/additems">Add Items</Link></li>
                     <li><Link to="/myitems">My Items</Link></li>
-                    <li><Button className='btn-login' variant='danger'>Login</Button></li>
+                    <li><Link to="/login">Login</Link></li>
                 </ul>
             </nav>
         </div>

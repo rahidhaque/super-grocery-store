@@ -22,7 +22,7 @@ const Inventories = () => {
                     }
                 </div>
                 <div className='text-center'>
-                    <Button className='w-15 rounded my-2' variant='danger'>Manage Inventories</Button>
+                    <Button className='w-15 rounded my-2' to="/login" variant='danger'>Manage Inventories</Button>
                 </div>
             </div>
         </div>
