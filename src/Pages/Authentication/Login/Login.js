@@ -7,6 +7,10 @@ import { Icon } from '@iconify/react';
 import './Login.css'
 
 const Login = () => {
+
+    const handleLogin = event => {
+        event.preventDefault();
+    }
     return (
         <div className='container'>
             <div className='d-flex justify-content-center align-items-center mt-5'>
@@ -14,7 +18,7 @@ const Login = () => {
                     <img className='w-75' src={login} alt="" />
                 </div>
                 <div className='w-50 form-login'>
-                    <Form>
+                    <Form onSubmit={handleLogin}>
                         <h3 className='text-center'><Icon icon="bxs:user" /></h3>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
