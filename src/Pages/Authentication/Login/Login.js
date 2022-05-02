@@ -40,7 +40,7 @@ const Login = () => {
     }
     return (
         <div className='container'>
-            <div className='d-flex justify-content-center align-items-center mt-5'>
+            <div className='d-flex justify-content-center align-items-center mt-5 login-container'>
                 <div>
                     <img className='w-75' src={login} alt="" />
                 </div>

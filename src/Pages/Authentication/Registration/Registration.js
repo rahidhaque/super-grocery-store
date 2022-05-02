@@ -6,6 +6,7 @@ import auth from '../../../firebase.init';
 import registration from '../../../images/Authentication/Registration.png';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import Loading from '../../Shared/Loading/Loading';
+import './Registration.css'
 
 const Registration = () => {
     const nameRef = useRef();
@@ -33,7 +34,7 @@ const Registration = () => {
     }
 
     if (user) {
-        navigate('/');
+        navigate('/login');
     }
 
     if (loading || updating) {
@@ -45,11 +46,11 @@ const Registration = () => {
     }
     return (
         <div>
-            <div className='d-flex justify-content-center align-items-center mt-5'>
+            <div className='d-flex justify-content-center align-items-center mt-5 register-container'>
                 <div>
                     <img className='w-75' src={registration} alt="" />
                 </div>
-                <div className='w-25 form-login mr-5'>
+                <div className='w-25 form-register mr-5'>
                     <Form onSubmit={handleRegistration} autoComplete="off">
                         <h3 className='text-center'><Icon icon="carbon:user-role" /></h3>
                         <Form.Group className="mb-3" controlId="formBasicName">
