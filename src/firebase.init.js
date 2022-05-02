@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyDYtH37aEKW8sYmKlm6r9YZdJmhY8gkfcM",
-    authDomain: "super-grocery-store.firebaseapp.com",
-    projectId: "super-grocery-store",
-    storageBucket: "super-grocery-store.appspot.com",
-    messagingSenderId: "130042813595",
-    appId: "1:130042813595:web:2964263cbd05687f74ba3e"
+    apiKey: process.env.REACT_APP_apiKey,
+    authDomain: process.env.REACT_APP_authDomain,
+    projectId: process.env.REACT_APP_projectId,
+    storageBucket: process.env.REACT_APP_storageBucket,
+    messagingSenderId: process.env.REACT_APP_messagingSenderId,
+    appId: process.env.REACT_APP_appId
 };
 
 // Initialize Firebase
