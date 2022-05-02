@@ -3,10 +3,6 @@ import { Link } from 'react-router-dom';
 import './Navbar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faSeedling, faTimes } from '@fortawesome/free-solid-svg-icons'
-import { Button } from 'react-bootstrap';
-
-
-
 
 
 const Navbar = () => {

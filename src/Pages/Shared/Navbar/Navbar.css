@@ -16,6 +16,7 @@
 
 .nav-items li a:hover {
     color: #DA5454;
+    text-decoration: underline;
 }
 
 .menu-icon {
