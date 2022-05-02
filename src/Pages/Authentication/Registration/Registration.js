@@ -4,7 +4,7 @@ import { Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import registration from '../../../images/Authentication/Registration.png';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import Loading from '../../Shared/Loading/Loading';
 
 const Registration = () => {
@@ -18,7 +18,9 @@ const Registration = () => {
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
     const handleRegistration = async event => {
         event.preventDefault();
@@ -26,18 +28,19 @@ const Registration = () => {
         const email = emailRef.current.value;
         const pass = passRef.current.value;
 
-        createUserWithEmailAndPassword(email, pass);
+        await createUserWithEmailAndPassword(email, pass);
+        await updateProfile({ displayName: name });
     }
 
     if (user) {
         navigate('/');
     }
 
-    if (loading) {
+    if (loading || updating) {
         return <Loading></Loading>;
     }
 
-    if (error) {
+    if (error || updateError) {
         errorText = <p className='text-danger'>Error: {error?.message}</p>
     }
     return (
