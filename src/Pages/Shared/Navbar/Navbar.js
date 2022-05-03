@@ -3,12 +3,19 @@ import { Link } from 'react-router-dom';
 import './Navbar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faSeedling, faTimes } from '@fortawesome/free-solid-svg-icons'
+import auth from '../../../firebase.init';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { signOut } from 'firebase/auth';
 
 
 const Navbar = () => {
+    const [user] = useAuthState(auth);
     const [click, setClick] = useState(false);
     const handleClick = () => {
         setClick(!click);
+    }
+    const handleSignOut = () => {
+        signOut(auth);
     }
     return (
         <div>
@@ -19,10 +26,27 @@ const Navbar = () => {
                 </div>
                 <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                     <li><Link to="/home">Home</Link></li>
-                    <li><Link to="/manageitems">Manage Items</Link></li>
-                    <li><Link to="/additems">Add Items</Link></li>
-                    <li><Link to="/myitems">My Items</Link></li>
-                    <li><Link to="/login">Login</Link></li>
+                    {
+                        user ?
+                            <li><Link disabl to="/manageitems">Manage Items</Link></li> :
+                            <li><Link style={{ display: 'none' }} to="/manageitems">Manage Items</Link></li>
+                    }
+                    {
+                        user ?
+                            <li><Link to="/additems">Add Items</Link></li> :
+                            <li><Link style={{ display: 'none' }} to="/additems">Add Items</Link></li>
+                    }
+                    {
+                        user ?
+                            <li><Link to="/myitems">My Items</Link></li> :
+                            <li><Link style={{ display: 'none' }} to="/myitems">My Items</Link></li>
+                    }
+                    {
+                        user ?
+                            <li><button onClick={handleSignOut} className='btn btn-link text-light text-decoration-none'>Sign Out</button></li>
+                            : <li><Link to="/login">Login</Link></li>
+
+                    }
                 </ul>
             </nav>
         </div>
