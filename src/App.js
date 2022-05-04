@@ -6,6 +6,10 @@ import Home from './Pages/Home/Home/Home';
 import Navbar from './Pages/Shared/Navbar/Navbar';
 import RequireAuth from './Pages/Authentication/RequireAuth/RequireAuth'
 import ManageItems from './Pages/ManageItems/ManageItems';
+import InventoryDetail from './Pages/InventoryDetail/InventoryDetail';
+
+
+
 
 function App() {
   return (
@@ -20,6 +24,12 @@ function App() {
           <ManageItems></ManageItems>
         </RequireAuth>} >
         </Route>
+        <Route path='home/inventory/:_id' element={
+          <RequireAuth><InventoryDetail></InventoryDetail></RequireAuth>
+        }></Route>
+        <Route path='manageitems/inventory/:_id' element={
+          <RequireAuth><InventoryDetail></InventoryDetail></RequireAuth>
+        }></Route>
       </Routes>
     </div>
   );

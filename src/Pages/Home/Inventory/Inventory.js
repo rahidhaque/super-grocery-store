@@ -1,9 +1,10 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './Inventory.css'
 
 const Inventory = ({ inventory }) => {
-    const { name, img, description, price, quantity, supplierName } = inventory;
+    const { _id, name, img, description, price, quantity, supplierName } = inventory;
     return (
         <div>
             <div className="card" style={{ width: '22rem' }}>
@@ -15,7 +16,9 @@ const Inventory = ({ inventory }) => {
                     <h6 className="card-subtitle my-2 text-muted"><span className='fw-bold'>Supplier Name: </span>{supplierName}</h6>
                     <p className="card-text">{description}</p>
                     <div className='text-center'>
-                        <Button variant='danger'>Update</Button>
+                        <Link to={`inventory/${_id}`}>
+                            <Button className='w-15 rounded my-2' variant='danger'>Update</Button>
+                        </Link>
                     </div>
                 </div>
             </div>

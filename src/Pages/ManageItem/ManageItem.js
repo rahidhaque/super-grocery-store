@@ -1,5 +1,6 @@
 import React from 'react';
-import { Table } from 'react-bootstrap';
+import { Button, Table } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const ManageItem = ({ inventory }) => {
     const { _id, name, img, description, price, quantity, supplierName } = inventory;
@@ -15,6 +16,7 @@ const ManageItem = ({ inventory }) => {
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Supplier Name</th>
+                        <th>Update</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,6 +28,9 @@ const ManageItem = ({ inventory }) => {
                         <td>{price}</td>
                         <td>{quantity}</td>
                         <td>{supplierName}</td>
+                        <td><Link to={`inventory/${_id}`}>
+                            <Button className='w-15 rounded my-2' variant='danger'>Update</Button>
+                        </Link></td>
                     </tr>
                 </tbody>
             </Table>
