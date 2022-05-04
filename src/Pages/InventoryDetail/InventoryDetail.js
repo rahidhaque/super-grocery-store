@@ -17,9 +17,7 @@ const InventoryDetail = () => {
     }, [_id]);
 
     const handleDeliver = () => {
-        if (inventory.quantity <= 0) {
-            return inventory.quantity = 0;
-        }
+
         setDeliver(inventory.quantity--);
         quantity = inventory.quantity;
         const updatedInventory = { quantity };
@@ -41,7 +39,12 @@ const InventoryDetail = () => {
 
     const handleRestock = (event) => {
         event.preventDefault();
+
         const stock = event.target.restock.value;
+        if (stock < 0) {
+            alert('Please Enter a positive value');
+            return;
+        }
         console.log(stock);
         quantity = inventory.quantity + parseInt(stock);
         const newInventory = { ...inventory, quantity };
