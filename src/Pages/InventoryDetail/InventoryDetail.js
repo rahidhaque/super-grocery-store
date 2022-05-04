@@ -7,6 +7,7 @@ const InventoryDetail = () => {
     const { _id } = useParams();
     const [inventory, setInventory] = useState({});
     const [deliver, setDeliver] = useState(0);
+
     let quantity;
     useEffect(() => {
         const url = `http://localhost:5000/inventory/${_id}`;
@@ -14,14 +15,16 @@ const InventoryDetail = () => {
             .then(res => res.json())
             .then(data => setInventory(data))
     }, [_id]);
+
     const handleDeliver = () => {
-        if (inventory.quantity === 0) {
-            return;
+        if (inventory.quantity <= 0) {
+            return inventory.quantity = 0;
         }
         setDeliver(inventory.quantity--);
         quantity = inventory.quantity;
         const updatedInventory = { quantity };
-        console.log(updatedInventory);
+
+
         const url = `http://localhost:5000/inventory/${_id}`;
         fetch(url, {
             method: "PUT",
@@ -35,8 +38,33 @@ const InventoryDetail = () => {
                 console.log("Success:", data);
             });
     }
+
+    const handleRestock = (event) => {
+        event.preventDefault();
+        const stock = event.target.restock.value;
+        console.log(stock);
+        quantity = inventory.quantity + parseInt(stock);
+        const newInventory = { ...inventory, quantity };
+        setInventory(newInventory);
+        const updatedInventory = { quantity };
+
+
+        const url = `http://localhost:5000/inventory/${_id}`;
+        fetch(url, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(updatedInventory),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log("Success:", data);
+            });
+
+    }
     return (
-        <div className='d-flex justify-content-center align-items-center mt-5'>
+        <div className='d-flex justify-content-evenly align-items-center mt-5'>
             <div className="card" style={{ width: '22rem' }}>
                 <img src={inventory.img} className="card-img-top" alt="..." />
                 <div className="card-body">
@@ -54,6 +82,14 @@ const InventoryDetail = () => {
 
                     </div>
                 </div>
+            </div>
+            <div>
+                <form onSubmit={handleRestock}>
+                    <input type="number" name="restock" id="restock" /> <br />
+                    <div className='text-center'>
+                        <input className='bg-danger mt-2 text-light border border-danger rounded' type="submit" value="Restock" />
+                    </div>
+                </form>
             </div>
         </div>
     );
