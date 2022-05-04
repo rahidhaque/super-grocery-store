@@ -1,28 +1,28 @@
-import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import useInventories from '../../../hooks/useInventories';
 import Inventory from '../Inventory/Inventory';
 import './inventories.css'
 
 const Inventories = () => {
-    const [inventories, setInventories] = useState([]);
-    useEffect(() => {
-        fetch('inventories.json')
-            .then(res => res.json())
-            .then(data => setInventories(data))
-    }, [])
+    const [inventories] = useInventories();
+
     return (
         <div className='container'>
             <div className='row'>
                 <h2 className='text-center my-5'>Our Dealing Inventories</h2>
                 <div className='inventories-container'>
                     {
-                        inventories.map(inventory => <Inventory
+                        inventories.slice(0, 6).map(inventory => <Inventory
+                            key={inventory._id}
                             inventory={inventory}
                         ></Inventory>)
                     }
                 </div>
                 <div className='text-center'>
-                    <Button className='w-15 rounded my-2' to="/login" variant='danger'>Manage Inventories</Button>
+                    <Link to="/manageitems">
+                        <Button className='w-15 rounded my-2' variant='danger'>Manage Inventories</Button>
+                    </Link>
                 </div>
             </div>
         </div>

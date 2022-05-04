@@ -28,7 +28,7 @@ const Navbar = () => {
                     <li><Link to="/home">Home</Link></li>
                     {
                         user ?
-                            <li><Link disabl to="/manageitems">Manage Items</Link></li> :
+                            <li><Link to="/manageitems">Manage Items</Link></li> :
                             <li><Link style={{ display: 'none' }} to="/manageitems">Manage Items</Link></li>
                     }
                     {

@@ -38,5 +38,13 @@
         "quantity": 180,
         "supplierName": "Bangladesh Bazar",
         "img": "https://images.deliveryhero.io/image/darkstores-bd/Perishable/7310074.jpg?height=220&dpi=1&width=250"
+    },
+    {
+        "name": "Surf Excel Washing Powder 500 g",
+        "price": "99",
+        "description": "Surf Excel Easy wash has Fast Action Formula which dissolves in just a few seconds and works instantly to remove various tough stains such as chocolate, oil, rasam, curry, soup, ketchup, and beverages. Moreover, now removing stains will take Half the time.",
+        "quantity": 42,
+        "supplierName": "Unilever",
+        "img": "https://images.deliveryhero.io/image/darkstores-bd/Perishable/7310074.jpg?height=220&dpi=1&width=250"
     }
 ]
