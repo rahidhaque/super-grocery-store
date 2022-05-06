@@ -7,6 +7,7 @@ import Navbar from './Pages/Shared/Navbar/Navbar';
 import RequireAuth from './Pages/Authentication/RequireAuth/RequireAuth'
 import ManageItems from './Pages/ManageItems/ManageItems';
 import InventoryDetail from './Pages/InventoryDetail/InventoryDetail';
+import AddItems from './Pages/AddItems/AddItems';
 
 
 
@@ -30,6 +31,7 @@ function App() {
         <Route path='manageitems/inventory/:_id' element={
           <RequireAuth><InventoryDetail></InventoryDetail></RequireAuth>
         }></Route>
+        <Route path='/additems' element={<AddItems></AddItems>}></Route>
       </Routes>
     </div>
   );

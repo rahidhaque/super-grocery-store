@@ -17,7 +17,9 @@ const InventoryDetail = () => {
     }, [_id]);
 
     const handleDeliver = () => {
-
+        if (inventory.quantity <= 0) {
+            return;
+        }
         setDeliver(inventory.quantity--);
         quantity = inventory.quantity;
         const updatedInventory = { quantity };

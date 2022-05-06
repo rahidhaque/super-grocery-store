@@ -1,0 +1,17 @@
+.mobile-table-display {
+    display: none;
+}
+
+.large-table-display img {
+    width: 150px;
+}
+
+@media screen and (max-width: 960px) {
+    .mobile-table-display {
+        display: block;
+    }
+
+    .large-table-display {
+        display: none;
+    }
+}
