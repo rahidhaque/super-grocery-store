@@ -79,7 +79,7 @@ const InventoryDetail = () => {
                     <h6 className="card-subtitle my-2 text-muted"><span className='fw-bold'>Supplier Name: </span>{inventory.supplierName}</h6>
                     <p className="card-text">{inventory.description}</p>
                     {
-                        inventory.quantity === 0 ? <h4 className='text-danger my-2'>Sold</h4> : <h6 style={{ display: 'none' }}>Sold</h6>
+                        inventory.quantity === 0 ? <h4 className='text-danger my-2'>Sold Out</h4> : <h6 style={{ display: 'none' }}>Sold Out</h6>
                     }
                     <div className='text-center'>
 
