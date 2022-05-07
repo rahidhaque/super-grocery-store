@@ -12,7 +12,7 @@ const ManageItems = () => {
     const handleShow = () => setShow(true);
 
     const handleInventoryDelete = (_id) => {
-        const url = `http://localhost:5000/inventory/${_id}`;
+        const url = `https://arcane-brook-72001.herokuapp.com/inventory/${_id}`;
         fetch(url, {
             method: 'DELETE'
         })

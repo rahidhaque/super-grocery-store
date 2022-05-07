@@ -29,7 +29,7 @@ const AddItems = () => {
 
         const inventory = { email, name, price, description, quantity, supplierName, img };
 
-        fetch('http://localhost:5000/inventory', {
+        fetch('https://arcane-brook-72001.herokuapp.com/inventory', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
