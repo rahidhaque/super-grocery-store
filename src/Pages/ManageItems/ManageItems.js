@@ -27,61 +27,59 @@ const ManageItems = () => {
     }
     return (
         <div className='mt-2'>
-            {
-                inventories.map(inventory =>
+            <Table responsive="sm" striped bordered hover variant="dark" className='large-table-display'>
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Grocery Name</th>
+                        <th>Image</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Supplier</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        inventories.map(inventory =>
+                            <tr key={inventory._id}>
+                                <td>{inventory._id}</td>
+                                <td className='w-25'>{inventory.name}</td>
+                                <td><img className='img-fluid' src={inventory.img} alt="" /></td>
+                                <td>{inventory.description}</td>
+                                <td>{inventory.price}</td>
+                                <td>{inventory.quantity}</td>
+                                <td>{inventory.supplierName}</td>
+                                <td><Link to={`inventory/${inventory._id}`}>
+                                    <Button className='w-15 rounded my-2' variant='danger'>Update</Button>
+                                </Link></td>
 
-                    <div key={inventory._id}>
-                        <Table responsive="sm" striped bordered hover variant="dark" className='large-table-display'>
-                            <thead>
-                                <tr>
-                                    <th>id</th>
-                                    <th>Grocery Name</th>
-                                    <th>Image</th>
-                                    <th>Description</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Supplier</th>
-                                    <th>Update</th>
-                                    <th>Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>{inventory._id}</td>
-                                    <td className='w-25'>{inventory.name}</td>
-                                    <td><img className='img-fluid' src={inventory.img} alt="" /></td>
-                                    <td>{inventory.description}</td>
-                                    <td>{inventory.price}</td>
-                                    <td>{inventory.quantity}</td>
-                                    <td>{inventory.supplierName}</td>
-                                    <td><Link to={`inventory/${inventory._id}`}>
-                                        <Button className='w-15 rounded my-2' variant='danger'>Update</Button>
-                                    </Link></td>
+                                <td><Button variant="danger" className='my-2' onClick={handleShow}>
+                                    Delete
+                                </Button>
 
-                                    <td><Button variant="danger" className='my-2' onClick={handleShow}>
-                                        Delete
-                                    </Button>
+                                    <Modal show={show} onHide={handleClose}>
+                                        <Modal.Header closeButton>
+                                            <Modal.Title>Deleting</Modal.Title>
+                                        </Modal.Header>
+                                        <Modal.Body>Are you sure you want to delete?</Modal.Body>
+                                        <Modal.Footer>
+                                            <Button variant="danger" onClick={() => handleInventoryDelete(inventory._id)}>
+                                                Delete
+                                            </Button>
+                                            <Button variant="dark" onClick={handleClose}>
+                                                Close
+                                            </Button>
+                                        </Modal.Footer>
+                                    </Modal></td>
+                            </tr>
 
-                                        <Modal show={show} onHide={handleClose}>
-                                            <Modal.Header closeButton>
-                                                <Modal.Title>Deleting</Modal.Title>
-                                            </Modal.Header>
-                                            <Modal.Body>Are you sure you want to delete?</Modal.Body>
-                                            <Modal.Footer>
-                                                <Button variant="danger" onClick={() => handleInventoryDelete(inventory._id)}>
-                                                    Delete
-                                                </Button>
-                                                <Button variant="dark" onClick={handleClose}>
-                                                    Close
-                                                </Button>
-                                            </Modal.Footer>
-                                        </Modal></td>
-                                </tr>
-                            </tbody>
-                        </Table>
-
-                    </div>)
-            }
+                        )
+                    }
+                </tbody>
+            </Table >
             <div className='text-center'>
                 <Link to="/additems">
                     <Button className='w-15 rounded my-2' variant='danger'>Add Items</Button>
