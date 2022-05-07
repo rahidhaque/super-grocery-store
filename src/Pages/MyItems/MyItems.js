@@ -1,6 +1,9 @@
+import axios from 'axios';
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import './MyItems.css'
 
@@ -8,6 +11,7 @@ const MyItems = () => {
     const [user] = useAuthState(auth);
     const [inventories, setInventories] = useState([]);
     const [show, setShow] = useState(false);
+    const navigate = useNavigate();
     const email = user?.email;
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -27,18 +31,32 @@ const MyItems = () => {
         setShow(false);
     }
     useEffect(() => {
-        const url = `http://localhost:5000/myinventory?email=${email}`;
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setInventories(data))
-    }, [])
-
+        const getInventories = async () => {
+            const url = `http://localhost:5000/myinventory?email=${email}`;
+            try {
+                const { data } = await axios.get(url, {
+                    headers: {
+                        authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                    }
+                });
+                setInventories(data);
+            }
+            catch (error) {
+                console.log(error.message);
+                if (error.response.status === 403 || error.response.status === 401) {
+                    signOut(auth);
+                    navigate('/login');
+                }
+            }
+        }
+        getInventories();
+    }, [user]);
     return (
         <div className='container mt-5'>
             <div className='row'>
                 <div className='my-inventories-container'>
                     {
-                        inventories.map(inventory => <div>
+                        inventories.map(inventory => <div key={inventory._id}>
 
                             <div className="card" style={{ width: '22rem' }}>
                                 <img src={inventory.img} className="card-img-top" alt="..." />

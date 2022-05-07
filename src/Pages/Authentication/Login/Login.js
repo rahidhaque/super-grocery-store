@@ -8,6 +8,7 @@ import './Login.css'
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
+import axios from 'axios';
 
 const Login = () => {
     const emailRef = useRef();
@@ -28,6 +29,9 @@ const Login = () => {
         const pass = passRef.current.value;
 
         await signInWithEmailAndPassword(email, pass);
+
+        const { data } = await axios.post('http://localhost:5000/login', { email });
+        localStorage.setItem('accessToken', data.accessToken);
         navigate(from, { replace: true });
     }
 
