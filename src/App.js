@@ -8,6 +8,7 @@ import RequireAuth from './Pages/Authentication/RequireAuth/RequireAuth'
 import ManageItems from './Pages/ManageItems/ManageItems';
 import InventoryDetail from './Pages/InventoryDetail/InventoryDetail';
 import AddItems from './Pages/AddItems/AddItems';
+import MyItems from './Pages/MyItems/MyItems';
 
 
 
@@ -35,6 +36,9 @@ function App() {
           <RequireAuth><InventoryDetail></InventoryDetail></RequireAuth>
         }></Route>
         <Route path='/additems' element={<AddItems></AddItems>}></Route>
+        <Route path='/myitems' element={
+          <RequireAuth><MyItems></MyItems></RequireAuth>
+        }></Route>
       </Routes>
     </div>
   );

@@ -2,8 +2,12 @@ import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const AddItems = () => {
+    const [user] = useAuthState(auth);
+    const emailRef = useRef();
     const nameRef = useRef();
     const imgRef = useRef();
     const descriptionRef = useRef();
@@ -11,9 +15,11 @@ const AddItems = () => {
     const quantityRef = useRef();
     const supplierRef = useRef();
 
+
     const handleAddInventory = (event) => {
         event.preventDefault();
 
+        const email = emailRef.current.value;
         const name = nameRef.current.value;
         const img = imgRef.current.value;
         const description = descriptionRef.current.value;
@@ -21,7 +27,7 @@ const AddItems = () => {
         const quantity = quantityRef.current.value;
         const supplierName = supplierRef.current.value;
 
-        const inventory = { name, price, description, quantity, supplierName, img };
+        const inventory = { email, name, price, description, quantity, supplierName, img };
 
         fetch('http://localhost:5000/inventory', {
             method: 'POST',
@@ -32,8 +38,8 @@ const AddItems = () => {
         })
             .then(res => res.json())
             .then(data => {
-                toast.success('Inventory Added Successfully', {
-                    position: "top-center",
+                toast(' Inventory Successfully Added!', {
+                    position: "top-right",
                     autoClose: 5000,
                     hideProgressBar: false,
                     closeOnClick: true,
@@ -48,8 +54,12 @@ const AddItems = () => {
         <div className='container mt-5'>
             <Form onSubmit={handleAddInventory}>
                 <Form.Group className="mb-3" controlId="formBasicName">
+                    <Form.Label className='fw-bold'>User Email</Form.Label>
+                    <Form.Control ref={emailRef} type="email" value={user?.email} placeholder="Email" readOnly disabled />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicName">
                     <Form.Label className='fw-bold'>Grocery Name</Form.Label>
-                    <Form.Control ref={nameRef} type="text" placeholder="Enter grocery" required />
+                    <Form.Control ref={nameRef} type="text" placeholder="Enter grocery" autoComplete='off' required />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicName">
                     <Form.Label className='fw-bold'>Image URL</Form.Label>
@@ -76,7 +86,7 @@ const AddItems = () => {
                 </Button>
             </Form>
             <ToastContainer
-                position="top-center"
+                position="top-right"
                 autoClose={5000}
                 hideProgressBar={false}
                 newestOnTop={false}
