@@ -6,6 +6,7 @@ import { faBars, faSeedling, faTimes } from '@fortawesome/free-solid-svg-icons'
 import auth from '../../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { signOut } from 'firebase/auth';
+import { Button } from 'react-bootstrap';
 
 
 const Navbar = () => {
@@ -24,8 +25,9 @@ const Navbar = () => {
                 <div className='menu-icon' onClick={handleClick}>
                     {click ? <FontAwesomeIcon className='fa-logo' icon={faTimes} /> : <FontAwesomeIcon className='fa-logo' icon={faBars} />}
                 </div>
-                <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+                <ul className={click ? 'nav-menu active' : 'nav-menu mt-3'}>
                     <li><Link to="/home">Home</Link></li>
+                    <li><Link to="/blogs">Blogs</Link></li>
                     {
                         user ?
                             <li><Link to="/manageitems">Manage Items</Link></li> :
@@ -43,7 +45,7 @@ const Navbar = () => {
                     }
                     {
                         user ?
-                            <li><button onClick={handleSignOut} className='btn btn-link text-light text-decoration-none'>Sign Out</button></li>
+                            <li><Button onClick={handleSignOut} className='btn btn-link btn-danger text-light text-decoration-none signout-btn'>Sign Out</Button></li>
                             : <li><Link to="/login">Login</Link></li>
 
                     }

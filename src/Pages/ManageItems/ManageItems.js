@@ -68,11 +68,11 @@ const ManageItems = () => {
                                             </Modal.Header>
                                             <Modal.Body>Are you sure you want to delete?</Modal.Body>
                                             <Modal.Footer>
-                                                <Button variant="dark" onClick={handleClose}>
-                                                    Close
-                                                </Button>
                                                 <Button variant="danger" onClick={() => handleInventoryDelete(inventory._id)}>
                                                     Delete
+                                                </Button>
+                                                <Button variant="dark" onClick={handleClose}>
+                                                    Close
                                                 </Button>
                                             </Modal.Footer>
                                         </Modal></td>
