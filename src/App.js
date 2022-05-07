@@ -10,13 +10,15 @@ import InventoryDetail from './Pages/InventoryDetail/InventoryDetail';
 import AddItems from './Pages/AddItems/AddItems';
 import MyItems from './Pages/MyItems/MyItems';
 import Blogs from './Pages/Blogs/Blogs';
+import NotFound from './Pages/Shared/NotFound/NotFound';
+import Footer from './Pages/Shared/Footer/Footer';
 
 
 
 
 function App() {
   return (
-    <div>
+    <div className=''>
       <Navbar></Navbar>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
@@ -41,7 +43,9 @@ function App() {
         <Route path='/myitems' element={
           <RequireAuth><MyItems></MyItems></RequireAuth>
         }></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }

@@ -1,0 +1,14 @@
+li a {
+    text-decoration: none;
+}
+
+li a:hover {
+    color: red;
+}
+
+.footer-position {
+    clear: both;
+    position: relative;
+    height: 200px;
+    margin-top: 150px;
+}
