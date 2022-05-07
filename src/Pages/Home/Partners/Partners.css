@@ -1,0 +1,30 @@
+.supply-img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.supply-img-container img {
+    width: 250px;
+    height: 180px;
+}
+
+@media only screen and (max-width:576px) {
+    .supply-img-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 5px;
+    }
+
+    .supply-img-container img {
+        margin-left: 50px;
+    }
+}
+
+@media only screen and (min-width:577px) and (max-width:992px) {
+    .supply-img-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 5px;
+    }
+}
