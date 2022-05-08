@@ -10,7 +10,7 @@ const InventoryDetail = () => {
 
     let quantity;
     useEffect(() => {
-        const url = `http://localhost:5000/inventory/${_id}`;
+        const url = `https://arcane-brook-72001.herokuapp.com/inventory/${_id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setInventory(data))
@@ -25,7 +25,7 @@ const InventoryDetail = () => {
         const updatedInventory = { quantity };
 
 
-        const url = `http://localhost:5000/inventory/${_id}`;
+        const url = `https://arcane-brook-72001.herokuapp.com/inventory/${_id}`;
         fetch(url, {
             method: "PUT",
             headers: {
@@ -54,7 +54,7 @@ const InventoryDetail = () => {
         const updatedInventory = { quantity };
 
 
-        const url = `http://localhost:5000/inventory/${_id}`;
+        const url = `https://arcane-brook-72001.herokuapp.com/inventory/${_id}`;
         fetch(url, {
             method: "PUT",
             headers: {
@@ -66,7 +66,7 @@ const InventoryDetail = () => {
             .then((data) => {
                 console.log("Success:", data);
             });
-
+        event.target.reset();
     }
     return (
         <div className='container align-items-center mx-auto mt-5 update-container'>
@@ -89,7 +89,7 @@ const InventoryDetail = () => {
                             <Button onClick={handleDeliver} className='w-15 rounded my-2' variant='danger'>Deliver</Button>
 
                         </div>
-                        <form onSubmit={handleRestock}>
+                        <form className='mt-5' onSubmit={handleRestock}>
                             <input className='w-100' type="number" name="restock" id="restock" /> <br />
                             <div className='text-center'>
                                 <input className='bg-danger mt-2 text-light border border-danger rounded p-2' type="submit" value="Restock" />

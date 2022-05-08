@@ -7,6 +7,7 @@ import registration from '../../../images/Authentication/Registration.png';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import Loading from '../../Shared/Loading/Loading';
 import './Registration.css'
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Registration = () => {
     const nameRef = useRef();
@@ -72,10 +73,12 @@ const Registration = () => {
                         <div className='mt-2 fw-bold'>
                             {errorText}
                         </div>
-                        <p className='mt-2 text-center'>
-                            Already have an account? <Link className='text-decoration-none text-danger' to="/login">Login</Link>
-                        </p>
+
                     </Form>
+                    <p className='mt-2 text-center'>
+                        Already have an account? <Link className='text-decoration-none text-danger' to="/login">Login</Link>
+                    </p>
+                    <SocialLogin></SocialLogin>
                 </div>
             </div>
         </div >

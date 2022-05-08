@@ -8,7 +8,7 @@ import './Partners.css'
 
 const Partners = () => {
     return (
-        <div className='mt-2 container'>
+        <div className='my-5 container'>
             <h2 className='text-center'>Our Trusted Suppliers</h2>
             <div className='supply-img-container'>
                 <div>

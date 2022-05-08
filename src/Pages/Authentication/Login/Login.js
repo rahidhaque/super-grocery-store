@@ -10,6 +10,7 @@ import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Login = () => {
     const emailRef = useRef();
@@ -80,12 +81,14 @@ const Login = () => {
                         <div className='mt-2 fw-bold'>
                             {errorText}
                         </div>
+
                     </Form>
                     <p className='text-center mt-2'>Forget Password?
                         <button onClick={resetUserPassword} className='btn btn-link text-danger text-decoration-none' >Reset Password</button> </p>
                     <p className='mt-2 text-center'>
                         Not Registered? <Link className='text-decoration-none text-danger' to="/registration">Create an Account</Link>
                     </p>
+                    <SocialLogin></SocialLogin>
                 </div>
             </div>
             <ToastContainer />
