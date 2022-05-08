@@ -1,4 +1,4 @@
-# Pondit Tutor 
+# Super Grocery Store 
 [Live Site Link](https://super-grocery-store.web.app/)
 
 ## Information Regarding the Project
