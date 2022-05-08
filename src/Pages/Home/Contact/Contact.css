@@ -1,0 +1,20 @@
+.contact-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+@media only screen and (max-width:576px) {
+    .contact-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media only screen and (min-width:577px) and (max-width:992px) {
+    .contact-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
