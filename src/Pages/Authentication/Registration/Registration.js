@@ -10,9 +10,9 @@ import './Registration.css'
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Registration = () => {
-    const nameRef = useRef();
-    const emailRef = useRef();
-    const passRef = useRef();
+    const nameRef = useRef('');
+    const emailRef = useRef('');
+    const passRef = useRef('');
     const navigate = useNavigate();
     let errorText;
     const [
@@ -35,7 +35,7 @@ const Registration = () => {
     }
 
     if (user) {
-        navigate('/login');
+        navigate('/home');
     }
 
     if (loading || updating) {

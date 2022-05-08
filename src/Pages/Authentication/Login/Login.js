@@ -13,8 +13,8 @@ import { toast, ToastContainer } from 'react-toastify';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Login = () => {
-    const emailRef = useRef();
-    const passRef = useRef();
+    const emailRef = useRef('');
+    const passRef = useRef('');
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
@@ -27,6 +27,11 @@ const Login = () => {
     ] = useSignInWithEmailAndPassword(auth);
 
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+
+    if (loading || sending) {
+        return <Loading></Loading>;
+    }
+
 
     if (error) {
         errorText = <p className='text-danger'>{error.message}</p>
@@ -41,14 +46,14 @@ const Login = () => {
 
         const { data } = await axios.post('https://arcane-brook-72001.herokuapp.com/login', { email });
         localStorage.setItem('accessToken', data.accessToken);
-        navigate(from, { replace: true });
-
+        if (user) {
+            navigate(from, { replace: true });
+        }
     }
 
-
-
-
-
+    if (user) {
+        navigate('/home');
+    }
 
     const resetUserPassword = async () => {
         const email = emailRef.current.value;
@@ -61,9 +66,6 @@ const Login = () => {
         }
     }
 
-    if (loading || sending) {
-        return <Loading></Loading>;
-    }
 
 
 
@@ -90,11 +92,11 @@ const Login = () => {
                         <Button className='w-100' variant="danger" type="submit">
                             Login <span> <Icon icon="entypo:login" /></span>
                         </Button>
-                        <div className='mt-2 fw-bold'>
-                            {errorText}
-                        </div>
-
                     </Form>
+                    <div className='mt-2 fw-bold'>
+                        {errorText}
+                    </div>
+
                     <p className='text-center mt-2'>Forget Password?
                         <button onClick={resetUserPassword} className='btn btn-link text-danger text-decoration-none' >Reset Password</button> </p>
                     <p className='mt-2 text-center'>

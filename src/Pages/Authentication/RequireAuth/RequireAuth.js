@@ -11,15 +11,13 @@ const RequireAuth = ({ children }) => {
     const location = useLocation();
 
     const [sendEmailVerification, sending, error] = useSendEmailVerification(auth);
-    if (loading) {
+    if (loading || sending) {
         return <Loading></Loading>
     }
     if (!user) {
         return <Navigate to="/login" state={{ from: location }} replace />;
     }
-    if (sending) {
-        return <Loading></Loading>;
-    }
+
 
     if (error) {
         toast(error?.message);
