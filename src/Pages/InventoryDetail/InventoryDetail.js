@@ -70,7 +70,7 @@ const InventoryDetail = () => {
     }
     return (
         <div className='container align-items-center mx-auto mt-5 update-container'>
-            <div className="card card-body-update" style={{ width: '36rem' }}>
+            <div className="card card-body-update" style={{ width: '45rem' }}>
                 <div className="card-body d-flex justify-content-center align-items-center card-update">
                     <div className='mx-5'>
                         <img src={inventory.img} style={{ width: '200px', height: '170px' }} alt="..." />
