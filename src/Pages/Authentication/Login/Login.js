@@ -5,10 +5,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import login from '../../../images/Authentication/Login.png';
 import { Icon } from '@iconify/react';
 import './Login.css'
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Login = () => {
     const emailRef = useRef();
@@ -23,6 +24,8 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+
     const handleLogin = async event => {
         event.preventDefault();
         const email = emailRef.current.value;
@@ -35,7 +38,18 @@ const Login = () => {
         navigate(from, { replace: true });
     }
 
-    if (loading) {
+    const resetUserPassword = async () => {
+        const email = emailRef.current.value;
+        if (email) {
+            await sendPasswordResetEmail(email);
+            toast('Link Sent to Email for resetting password!!!');
+        }
+        else {
+            toast('Please Enter Your Email');
+        }
+    }
+
+    if (loading || sending) {
         return <Loading></Loading>;
     }
 
@@ -66,12 +80,15 @@ const Login = () => {
                         <div className='mt-2 fw-bold'>
                             {errorText}
                         </div>
-                        <p className='mt-2 text-center'>
-                            Not Registered? <Link className='text-decoration-none text-danger' to="/registration">Create an Account</Link>
-                        </p>
                     </Form>
+                    <p className='text-center mt-2'>Forget Password?
+                        <button onClick={resetUserPassword} className='btn btn-link text-danger text-decoration-none' >Reset Password</button> </p>
+                    <p className='mt-2 text-center'>
+                        Not Registered? <Link className='text-decoration-none text-danger' to="/registration">Create an Account</Link>
+                    </p>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };

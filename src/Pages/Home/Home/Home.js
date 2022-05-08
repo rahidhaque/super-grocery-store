@@ -3,7 +3,9 @@ import Banner from '../Banner/Banner';
 import Inventories from '../Inventories/Inventories';
 import Partners from '../Partners/Partners';
 
+
 const Home = () => {
+
     return (
         <div>
             <Banner></Banner>
