@@ -8,44 +8,7 @@ const Footer = () => {
         <div className='w-100 footer-position'>
             <footer className="footer-container footer-10 bg-dark">
                 <div className="container">
-                    <div className="row mb-2 pb-3 no-gutters">
-                        <div className="col-md-4 mb-md-0 mb-4 d-flex text-white">
-                            <div className="con con-1 w-100 py-5">
-                                <div className="con-info w-100 text-center">
-                                    <div className="icon d-flex align-items-center justify-content-center">
-                                        <span><Icon icon="ion-ios-call" /></span>
-                                    </div>
-                                    <div className="text">
-                                        <span>(+00) 1234 5678</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-4 mb-md-0 mb-4 d-flex text-white">
-                            <div className="con con-2 w-100 py-5">
-                                <div className="con-info w-100 text-center text-white">
-                                    <div className="icon d-flex align-items-center justify-content-center">
-                                        <span><Icon icon="ion-ios-mail" /></span>
-                                    </div>
-                                    <div className="text-white">
-                                        <span>ontirahid@yahoo.com</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-4 mb-md-0 mb-2 d-flex text-white">
-                            <div className="con con-3 w-100 py-5">
-                                <div className="con-info w-100 text-center">
-                                    <div className="icon d-flex align-items-center justify-content-center">
-                                        <span><Icon icon="ion-ios-pin" /></span>
-                                    </div>
-                                    <div className="text-white">
-                                        <span>76 Segunbagicha, Dhaka</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                     <div className="row">
                         <div className="col-md-7">
                             <div className="row text-center">
@@ -89,12 +52,12 @@ const Footer = () => {
                             </div>
                         </div>
                         <div className="col-md-5 mb-md-0 mb-4 mx-auto text-center">
-                            <h2 className="footer-heading text-center text-white">Subscribe</h2>
+                            <h2 className="footer-heading text-center text-white mt-2">Subscribe</h2>
                             <form action="#" className="subscribe-form">
                                 <div className="form-group d-block">
                                     <input type="text" className="form-control rounded-left mb-2" placeholder="Enter email address" />
 
-                                    <button type="submit" className="form-control mt-2  submit bg-dark text-white mx-auto rounded-right w-50">Subscribe</button>
+                                    <button type="submit" className="form-control  submit bg-dark text-white mx-auto rounded-right w-50">Subscribe</button>
 
                                 </div>
                             </form>
