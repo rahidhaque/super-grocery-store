@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faSeedling, faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -12,11 +12,13 @@ import { Button } from 'react-bootstrap';
 const Navbar = () => {
     const [user] = useAuthState(auth);
     const [click, setClick] = useState(false);
+    const navigate = useNavigate();
     const handleClick = () => {
         setClick(!click);
     }
     const handleSignOut = () => {
         signOut(auth);
+        navigate('/login');
     }
     return (
         <div>

@@ -21,11 +21,16 @@ const Login = () => {
     let errorText;
     const [
         signInWithEmailAndPassword,
+        user,
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+
+    if (error) {
+        errorText = <p className='text-danger'>{error.message}</p>
+    }
 
     const handleLogin = async event => {
         event.preventDefault();
@@ -37,7 +42,13 @@ const Login = () => {
         const { data } = await axios.post('https://arcane-brook-72001.herokuapp.com/login', { email });
         localStorage.setItem('accessToken', data.accessToken);
         navigate(from, { replace: true });
+
     }
+
+
+
+
+
 
     const resetUserPassword = async () => {
         const email = emailRef.current.value;
@@ -54,9 +65,10 @@ const Login = () => {
         return <Loading></Loading>;
     }
 
-    if (error) {
-        errorText = <p className='text-danger'>{error.message}</p>
-    }
+
+
+
+
     return (
         <div className='container'>
             <div className='d-flex justify-content-center align-items-center mt-5 login-container'>
